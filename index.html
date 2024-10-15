@@ -1,113 +1,68 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)https://berkegokmen1.github.io/dual-enc-3d-gan-inv/ -->
-<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+<html>
+   <head>
+      <meta charset="utf-8" />
       <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
       <!-- Replace the content tag with appropriate information -->
-      <meta name="description" content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images">
-      <meta property="og:title" content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images">
-      <meta property="og:description" content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images">
-      <meta property="og:url" content="https://berkegokmen1.github.io/dual-enc-3d-gan-inv/">
+      <meta
+         name="description"
+         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         />
+      <meta
+         property="og:title"
+         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         />
+      <meta
+         property="og:description"
+         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         />
+      <meta
+         property="og:url"
+         content="https://berkegokmen1.github.io/dual-enc-3d-gan-inv/"
+         />
       <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-      <meta property="og:image" content="static/images/mesh.png">
-      <meta property="og:image:width" content="856">
-      <meta property="og:image:height" content="856">
-      <meta name="twitter:title" content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images">
-      <meta name="twitter:description" content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images">
+      <meta property="og:image" content="static/images/mesh.png" />
+      <meta property="og:image:width" content="856" />
+      <meta property="og:image:height" content="856" />
+      <meta
+         name="twitter:title"
+         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         />
+      <meta
+         name="twitter:description"
+         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         />
       <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-      <meta name="twitter:image" content="static/images/mesh.png">
-      <meta name="twitter:card" content="static/images/mesh.png">
+      <meta name="twitter:image" content="static/images/mesh.png" />
+      <meta name="twitter:card" content="static/images/mesh.png" />
       <!-- Keywords for your paper to be indexed by-->
-      <meta name="keywords" content="3D GAN inversion, Latent space, 3D geometry reconstruction, Encoders, EG3D, PanoHead, 360-degree perspective, Dual encoder system, High-fidelity reconstruction, Triplane domain, Stitching framework, Occlusion-aware triplane discriminator, Adversarial loss, Viewpoint synthesis">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta
+         name="keywords"
+         content="3D GAN inversion, Latent space, 3D geometry reconstruction, Encoders, EG3D, PanoHead, 360-degree perspective, Dual encoder system, High-fidelity reconstruction, Triplane domain, Stitching framework, Occlusion-aware triplane discriminator, Adversarial loss, Viewpoint synthesis"
+         />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Dual Encoder 3D GAN Inversion</title>
-      <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style><link rel="icon" type="image/x-icon" href="https://berkegokmen1.github.io/dual-enc-3d-gan-inv/static/favicon/favicon.ico">
-      <link href="./assets/css" rel="stylesheet">
-      <link rel="stylesheet" href="./assets/bulma.min.css">
-      <link rel="stylesheet" href="./assets/bulma-carousel.min.css">
-      <link rel="stylesheet" href="./assets/bulma-slider.min.css">
-      <link rel="stylesheet" href="./assets/fontawesome.all.min.css">
-      <link rel="stylesheet" href="./assets/academicons.min.css">
-      <link rel="stylesheet" href="./assets/index.css">
-      <script src="./assets/jquery.min.js.下载"></script>
-      <script src="./assets/main.js.下载"></script><script src="./assets/ViewSDKInterface.js.下载"></script>
-      <script defer="" src="./assets/fontawesome.all.min.js.下载"></script>
-      <script src="./assets/bulma-carousel.min.js.下载"></script>
-      <script src="./assets/bulma-slider.min.js.下载"></script>
-      <script src="./assets/index.js.下载"></script>
-   <style type="text/css">.ViewSDK_hideOverflow {
-        overflow: hidden;
-    }</style><style type="text/css">.ViewSDK_parentRelativeWidth {
-        width: 100%;
-    }</style><style type="text/css">.ViewSDK_viewportRelativeWidth {
-        width: 100vw;
-    }</style><style type="text/css">.ViewSDK_parentRelativeHeight {
-        height: 100%;
-    }</style><style type="text/css">.ViewSDK_viewportRelativeHeight {
-        height: 100vh;
-    }</style><style type="text/css">.ViewSDK_fullScreenPDFViewer {
-        width:100vw !important; height:100vh !important;
-        max-width:100vw !important; max-height:100vh !important;
-        position:fixed; top:0; left:0; z-index:99999;
-        margin: 0 !important; padding: 0 !important;
-        border: none !important;
-    }</style><style type="text/css">:root { --ViewSDK-mobile-viewport-height:1vh; }</style><style type="text/css">.ViewSDK_fullScreenPDFViewerMobile {
-        width:100vw !important; height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
-        max-width:100vw !important; max-height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
-        position:fixed; top:0; left:0; z-index:99999;
-        margin: 0 !important; padding: 0 !important;
-        border: none !important;
-    }</style><style type="text/css">.ViewSDK_hideOverflow {
-        overflow: hidden;
-    }</style><style type="text/css">.ViewSDK_parentRelativeWidth {
-        width: 100%;
-    }</style><style type="text/css">.ViewSDK_viewportRelativeWidth {
-        width: 100vw;
-    }</style><style type="text/css">.ViewSDK_parentRelativeHeight {
-        height: 100%;
-    }</style><style type="text/css">.ViewSDK_viewportRelativeHeight {
-        height: 100vh;
-    }</style><style type="text/css">.ViewSDK_fullScreenPDFViewer {
-        width:100vw !important; height:100vh !important;
-        max-width:100vw !important; max-height:100vh !important;
-        position:fixed; top:0; left:0; z-index:9999;
-        margin: 0 !important; padding: 0 !important;
-        border: none !important;
-    }</style><style type="text/css">.ViewSDK_LBFullScreenPDFViewer {
-        width:100vw !important; height:100vh !important;
-        max-width:100vw !important; max-height:100vh !important;
-        position:fixed; top:0; left:0; z-index:10000;
-        margin: 0 !important; padding: 0 !important;
-        background-color: rgba(0, 0, 0, 0.2);
-        border: none !important;
-    }</style><style type="text/css">:root { --ViewSDK-mobile-viewport-height:1vh; }</style><style type="text/css">.ViewSDK_fullScreenPDFViewerMobile {
-        width:100vw !important; height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
-        max-width:100vw !important; max-height:calc(100 * var(--ViewSDK-mobile-viewport-height)) !important;
-        position:fixed; top:0; left:0; z-index:9999;
-        margin: 0 !important; padding: 0 !important;
-        border: none !important;
-    }</style><style type="text/css">.ViewSDK_LBLoader {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 10000;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #1473E6;
-        width: 56px !important;
-        height: 56px !important;
-        margin: -32px 0 0 -32px;
-        border-radius: 50%;
-        -webkit-animation: lbSpin 2s linear infinite;
-        animation: lbSpin 2s linear infinite;
-    }
-    @-webkit-keyframes lbSpin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-    }
-    @keyframes lbSpin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }</style></head>
+      <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico" />
+      <link
+         href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+         rel="stylesheet"
+         />
+      <link rel="stylesheet" href="static/css/bulma.min.css" />
+      <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+      <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+      <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+      <link
+         rel="stylesheet"
+         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+         />
+      <link rel="stylesheet" href="static/css/index.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+      <script defer src="static/js/fontawesome.all.min.js"></script>
+      <script src="static/js/bulma-carousel.min.js"></script>
+      <script src="static/js/bulma-slider.min.js"></script>
+      <script src="static/js/index.js"></script>
+   </head>
    <body>
       <section class="hero">
          <div class="hero-body">
@@ -124,40 +79,68 @@
                      <div class="is-size-5 publication-authors">
                         <!-- Paper authors -->
                         <span class="author-block">
-                        <a href="https://www.linkedin.com/in/berkegokmen/" target="_blank">Ahmet Berke Gökmen</a><sup>*</sup>,</span>
+                        <a
+                           href="https://www.linkedin.com/in/berkegokmen/"
+                           target="_blank"
+                           >Ahmet Berke Gökmen</a
+                           ><sup>*</sup>,</span
+                           >
                         <span class="author-block">
-                        <a href="https://three-bee.github.io/" target="_blank">Bahri Batuhan Bilecen</a><sup>*</sup>,</span>
+                        <a href="https://three-bee.github.io/" target="_blank"
+                           >Bahri Batuhan Bilecen</a
+                           ><sup>*</sup>,</span
+                           >
                         <span class="author-block">
-                        <a href="https://www.cs.bilkent.edu.tr/~adundar/" target="_blank">Ayşegül Dündar</a>
+                        <a
+                           href="https://www.cs.bilkent.edu.tr/~adundar/"
+                           target="_blank"
+                           >Ayşegül Dündar</a
+                           >
                         </span>
                      </div>
                      <div class="is-size-5 publication-authors">
                         <span class="author-block">Bilkent University</span>
-                        <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                        <span class="eql-cntrb"
+                           ><small
+                           ><br /><sup>*</sup>Indicates Equal Contribution</small
+                           ></span
+                           >
                      </div>
                      <div class="column has-text-centered">
                         <div class="publication-links">
                            <!-- Arxiv PDF link -->
                            <span class="link-block">
-                           <a href="https://arxiv.org/pdf/2409.20530" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                           <a
+                              href="https://arxiv.org/pdf/2409.20530"
+                              target="_blank"
+                              class="external-link button is-normal is-rounded is-dark"
+                              >
                            <span class="icon">
-                           <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg><!-- <i class="fas fa-file-pdf"></i> Font Awesome fontawesome.com -->
+                           <i class="fas fa-file-pdf"></i>
                            </span>
                            <span>Paper</span>
                            </a>
                            </span>
                            <!-- Github link -->
                            <span class="link-block">
-                           <a href="https://github.com/berkegokmen1/dual-enc-3d-gan-inversion" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                           <a
+                              href="https://github.com/berkegokmen1/dual-enc-3d-gan-inversion"
+                              target="_blank"
+                              class="external-link button is-normal is-rounded is-dark"
+                              >
                            <span class="icon">
-                           <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                           <i class="fab fa-github"></i>
                            </span>
                            <span>Code</span>
                            </a>
                            </span>
                            <!-- ArXiv abstract Link -->
                            <span class="link-block">
-                           <a href="https://arxiv.org/abs/2409.20530" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                           <a
+                              href="https://arxiv.org/abs/2409.20530"
+                              target="_blank"
+                              class="external-link button is-normal is-rounded is-dark"
+                              >
                            <span class="icon">
                            <i class="ai ai-arxiv"></i>
                            </span>
@@ -176,15 +159,24 @@
          <div class="hero-body">
          <div class="container">
             <div class="item item-video1">
-               <video poster="" id="video1" autoplay="" playsinline="" preload="auto" muted="" loop="" height="100%">
+               <video
+                  poster=""
+                  id="video1"
+                  autoplay
+                  playsinline
+                  preload="auto"
+                  muted
+                  loop
+                  height="100%"
+                  >
                   <!-- Your video file here -->
-                  <source src="static/videos/grid_images_last.mp4" type="video/mp4">
+                  <source src="static/videos/grid_images_last.mp4" type="video/mp4" />
                </video>
             </div>
          </div>
          <br>
          <p style="font-size: small; text-align: center;" class="content is-centered">Videos are best viewed on desktop.</p>
-      </div></section>
+      </section>
       <!-- End video carousel -->
       <!-- Paper abstract -->
       <section class="section hero is-light">
@@ -235,7 +227,7 @@
          <br><br><br>
          <div class="item item-video1">
             <h3 class="title is-4">Training</h3>
-            <img src="./assets/overview.png" width="75%" class="center" alt="Training">                  
+            <img src="static/images/overview.png" width="75%" class="center" alt="Training" />                  
             <h2 class="has-text-centered">
                <br>
                <p class="justified-text">
@@ -246,38 +238,56 @@
             </h2>
          </div>
          <div class="item item-video1">
-            <h3 class="title is-4">STMR</h3>
-            <img src="./assets/STMR.png" alt="STMR">                  
+            <h3 class="title is-4">Inference</h3>
+            <img src="static/images/STMR" alt="Inference" />                  
             <h2 class="has-text-centered justified-text">
                <br>
                The inference pipeline with dual encoders for full 3D head reconstruction. Given a face portrait with pose π<sub>R</sub>, we can perform 360-degree rendering from any given pose π<sub>Novel</sub>. Here E<sub>1</sub> refers to the encoder which is trained with <b>occlusion aware discriminator</b> whereas E<sub>2</sub> is trained without the discriminator to maximize reconstruction in visible regions.
             </h2>
          </div>
-      </div></div></section>
+      </section>
       <!-- Youtube video -->
       <section class="hero is-small is-light">
          <div class="hero-body">
          <div class="container">
          <h2 class="title is-3">More Results</h2>
          <div class="item item-video1">
-            <video poster="" id="video1" autoplay="" playsinline="" preload="auto" muted="" loop="" height="100%">
+            <video
+               poster=""
+               id="video1"
+               autoplay
+               playsinline
+               preload="auto"
+               muted
+               loop
+               height="100%"
+               >
                <!-- Your video file here -->
-               <source src="static/videos/grid_2.mp4" type="video/mp4">
+               <source src="static/videos/grid_2.mp4" type="video/mp4" />
             </video>
             <h2 class="subtitle has-text-centered">
                <br>
                Qualitative results of our method on the different human faces.
             </h2>
          </div>
-      </div></div></section>
+      </section>
       <section class="hero is-small  is-light">
          <div class="hero-body">
          <div class="container">
          <h2 class="title is-3">Mesh Visualization Results</h2>
          <div class="item item-video1">
-            <video poster="" id="video1" autoplay="" playsinline="" preload="auto" muted="" loop="" height="100%">
+            <video
+               poster=""
+               id="video1"
+               autoplay
+               playsinline
+               preload="auto"
+               muted
+               loop
+               height="100%"
+               >
                <!-- Your video file here -->
-               <source src="static/videos/mesh_grid_last.mp4" type="video/mp4">
+               <source src="static/videos/mesh_grid_last.mp4" type="video/mp4" />
             </video>
             <h2 class="subtitle has-text-centered">
                <br>
@@ -285,7 +295,7 @@
                <p style="font-size: small;">We recognize that, in certain cases, the artifacts are visible in the back middle of the head and are more noticeable in the mesh rendering. Additional research and improvements are required.</p>
             </h2>
          </div>
-      </div></div></section>
+      </section>
       <!-- End youtube video -->
       
       <!-- Paper poster -->
@@ -294,9 +304,18 @@
          <div class="container">
          <h2 class="title is-3">Comparison With Other Methods</h2>
          <div class="item item-video1">
-            <video poster="" id="video1" autoplay="" playsinline="" preload="auto" muted="" loop="" height="100%">
+            <video
+               poster=""
+               id="video1"
+               autoplay
+               playsinline
+               preload="auto"
+               muted
+               loop
+               height="100%"
+               >
                <!-- Your video file here -->
-               <source src="static/videos/comparison_with_titles.mp4" type="video/mp4">
+               <source src="static/videos/comparison_with_titles.mp4" type="video/mp4" />
             </video>
             <h2 class="subtitle has-text-centered justified-text">
                <br>
@@ -305,7 +324,7 @@
 
             </h2>
          </div>
-      </div></div></section>
+      </section>
       <!--End paper poster -->
       <!--BibTex citation -->
       <section class="section" id="BibTeX">
@@ -330,11 +349,24 @@
                   <div class="content">
                      <p>
                         This page was built using the
-                        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>
-                        which was adopted from the <a href="https://nerfies.github.io/" target="_blank">Nerfies</a> project page. <br>
+                        <a
+                           href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                           target="_blank"
+                           >Academic Project Page Template</a
+                           >
+                        which was adopted from the <a
+                           href="https://nerfies.github.io"
+                           target="_blank"
+                           >Nerfies</a
+                           > project page. <br />
                         This website is licensed under a
-                        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
-                        License</a>.
+                        <a
+                           rel="license"
+                           href="http://creativecommons.org/licenses/by-sa/4.0/"
+                           target="_blank"
+                           >Creative Commons Attribution-ShareAlike 4.0 International
+                        License</a
+                           >.
                      </p>
                   </div>
                </div>
@@ -344,25 +376,5 @@
       <!-- Statcounter tracking code -->
       <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
       <!-- End of Statcounter Code -->
-   
-
-</body><div class="XTranslate"><template shadowrootmode="closed"><style type="text/css">:host-context(.XTranslate){--flex-gap: var(--theme-spacing);--theme-content-width: 620px;--theme-color-contrast: black;--theme-bgc: white;--theme-bgc-invert: #36393e;--theme-color-primary: #942486aa;--theme-color-accent: #e85555;--theme-color-text: #87909c;--theme-color-text2: #a0a0a0;--theme-color-success: rgb(67, 160, 71);--theme-color-error: rgb(244, 67, 54);--theme-border-color: rgba(135, 144, 156, 0.5);--theme-border-radius: 5px;--theme-spacing: 10px;--theme-spacing-half: calc(var(--theme-spacing) / 2);--theme-spacing-double: calc(var(--theme-spacing) * 2);--theme-scrollbar-bgc: rgba(0, 0, 0, .25);--theme-scrollbar-size: var(--theme-spacing);all:unset;position:absolute !important;width:100% !important;left:0 !important;top:0 !important;z-index:1000000000 !important}:host-context(.XTranslate) *,:host-context(.XTranslate) *:after,:host-context(.XTranslate) *:before{box-sizing:border-box;outline:none}
-.icon-module__Icon--mJDq3{--small-size: 20px;--big-size: 30px;--color-active: black;--bgc-active: transparent;display:inline-flex;flex-shrink:0;font-style:normal;vertical-align:middle;align-items:center;justify-content:center;text-decoration:none;user-select:none;box-sizing:content-box;font-size:var(--size, 24px);width:var(--size, 24px);height:var(--size, 24px)}.icon-module__Icon--mJDq3.icon-module__small--GKI9R{font-size:var(--size, var(--small-size));width:var(--size, var(--small-size));height:var(--size, var(--small-size))}.icon-module__Icon--mJDq3.icon-module__big--TkVER{font-size:var(--size, var(--big-size));width:var(--size, var(--big-size));height:var(--size, var(--big-size))}.icon-module__Icon--mJDq3>span{width:100%;height:100%;display:inherit}.icon-module__Icon--mJDq3.icon-module__material--eODHf>span{font-family:"MaterialIcons-XTranslate";font-size:inherit;font-weight:normal;font-style:normal;display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;font-feature-settings:"liga"}.icon-module__Icon--mJDq3.icon-module__svg--Vvipk{box-sizing:content-box}.icon-module__Icon--mJDq3.icon-module__svg--Vvipk svg{pointer-events:none;width:100%;height:100%}.icon-module__Icon--mJDq3.icon-module__svg--Vvipk:not(.icon-module__colorful--DPeih) svg *{fill:currentColor}.icon-module__Icon--mJDq3.icon-module__svg--Vvipk:not(.icon-module__colorful--DPeih) svg line{stroke:currentColor}.icon-module__Icon--mJDq3.icon-module__disabled--OQ0Qq{opacity:.5;color:inherit !important;cursor:not-allowed !important}.icon-module__Icon--mJDq3.icon-module__active--urCUL,.icon-module__Icon--mJDq3.icon-module__interactive--jiTQl:hover,.icon-module__Icon--mJDq3.icon-module__interactive--jiTQl.icon-module__focusable--l60fB:focus{color:var(--color-active);box-shadow:0 0 0 3px var(--bgc-active);background-color:var(--bgc-active)}.icon-module__Icon--mJDq3.icon-module__interactive--jiTQl{cursor:pointer;transition:250ms color,250ms opacity,150ms background-color,150ms box-shadow;border-radius:50%}:root[data-theme=dark] .icon-module__Icon--mJDq3{--color-active: white}
-.tooltip-module__Tooltip--YtcUH{position:absolute;background:var(--theme-bgc-invert);color:var(--theme-bgc);border-radius:var(--theme-border-radius);font-size:small;font-weight:normal;padding:.5em;pointer-events:none;z-index:1000}.tooltip-module__Tooltip--YtcUH:empty{display:none}.tooltip-module__Tooltip--YtcUH.tooltip-module__following--Qpt8D{position:fixed}.tooltip-module__Tooltip--YtcUH.tooltip-module__nowrap--tb9Lv{white-space:nowrap}.tooltip-module__Tooltip--YtcUH:not(.tooltip-module__following--Qpt8D).tooltip-module__left--tG61L{left:0}.tooltip-module__Tooltip--YtcUH:not(.tooltip-module__following--Qpt8D).tooltip-module__right--xjHhN{right:0}.tooltip-module__Tooltip--YtcUH:not(.tooltip-module__following--Qpt8D).tooltip-module__top--VpF0w{bottom:100%}.tooltip-module__Tooltip--YtcUH:not(.tooltip-module__following--Qpt8D).tooltip-module__bottom--or4AB{top:100%}.tooltip-module__Tooltip--YtcUH:not(.tooltip-module__following--Qpt8D).tooltip-module__center--KyElS{left:50%;transform:translateX(-50%)}
-.animate-module__Animate--CMGv9.opacity{opacity:0}.animate-module__Animate--CMGv9.opacity.enter{transition-property:opacity;transition-duration:100ms;opacity:1}.animate-module__Animate--CMGv9.opacity.leave{transition-duration:150ms;transition-timing-function:ease-out;opacity:0}.animate-module__Animate--CMGv9.slide-right{transform:translateX(100%);will-change:transform}.animate-module__Animate--CMGv9.slide-right.enter{transform:translateX(0);transition:transform 100ms;transition-timing-function:ease-in-out}.animate-module__Animate--CMGv9.slide-right.leave{transform:translateX(100%);transition:transform 150ms}.animate-module__Animate--CMGv9.opacity-scale{opacity:0}.animate-module__Animate--CMGv9.opacity-scale.enter{transition:opacity 250ms;opacity:1}.animate-module__Animate--CMGv9.opacity-scale.leave{will-change:opacity,transform;opacity:0;transform:scale(1.25);transition:transform 150ms ease-in,opacity 150ms ease-out}
-.xtranslate-icon-module__XTranslateIcon--O7hhS{--size: 16px;position:absolute;box-shadow:0 0 5px -1px #000 !important;background:#fff !important;padding:5px;border-radius:50%;cursor:pointer}.xtranslate-icon-module__XTranslateIcon--O7hhS:not(:hover) path{fill:#000}
-.popup-module__Popup--oEzoq{--theme-spacing: .6em;position:relative;padding:var(--theme-spacing);margin:var(--theme-spacing) 0;visibility:hidden;opacity:0;transition:opacity 100ms ease-out;transition-delay:100ms;line-height:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}.popup-module__Popup--oEzoq.popup-module__previewMode--dVogi{margin:auto}.popup-module__Popup--oEzoq.popup-module__fixedPos--_yVmx{position:fixed !important;margin:var(--theme-spacing)}.popup-module__Popup--oEzoq.popup-module__fixedPos--_yVmx.left{left:0}.popup-module__Popup--oEzoq.popup-module__fixedPos--_yVmx.top{top:0}.popup-module__Popup--oEzoq.popup-module__fixedPos--_yVmx.right{right:0}.popup-module__Popup--oEzoq.popup-module__fixedPos--_yVmx.bottom{bottom:0}.popup-module__Popup--oEzoq.popup-module__visible--WqwbT{visibility:visible;opacity:1;z-index:10000 !important}.popup-module__Popup--oEzoq .popup-module__rtl--I4xRj{direction:rtl}.popup-module__Popup--oEzoq .popup-module__icon--GpRJB{--size: 1.6em;--bgc-active: none;width:auto;height:auto;opacity:.75;cursor:pointer;user-select:none;color:inherit !important;border-radius:0 !important;overflow:hidden}.popup-module__Popup--oEzoq .popup-module__icon--GpRJB:focus,.popup-module__Popup--oEzoq .popup-module__icon--GpRJB:hover{opacity:1}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84{--flex-gap: var(--theme-spacing-half);overflow:auto;overscroll-behavior:contain}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84::-webkit-scrollbar{width:calc(var(--theme-scrollbar-size) + 2px);height:calc(var(--theme-scrollbar-size) + 2px);background:rgba(0,0,0,0)}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84::-webkit-scrollbar-thumb{background:var(--theme-scrollbar-bgc);background-clip:padding-box;border:1px solid rgba(0,0,0,0);border-radius:calc(var(--theme-scrollbar-size) + 2px);--theme-scrollbar-size: .5em;--theme-scrollbar-bgc: none;border:1px solid}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84::-webkit-scrollbar-corner{background-color:rgba(0,0,0,0)}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__translation--DRclF{display:flex;gap:var(--flex-gap)}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__translation--DRclF .popup-module__value--AaqkU{padding:2px 0;flex:1 0}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__translation--DRclF .popup-module__transcription--eyaKH{opacity:.75;font-style:normal}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__dictionary--rVXlT{margin-top:var(--theme-spacing-half)}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__dictionary--rVXlT .popup-module__wordType--F_wvr{font-weight:bold}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__dictionary--rVXlT .popup-module__wordMeanings--xqlvq{padding-left:var(--theme-spacing)}.popup-module__Popup--oEzoq .popup-module__translationResult--IxC84 .popup-module__dictionary--rVXlT .popup-module__wordMeanings--xqlvq .popup-module__word--MS38w[title]{cursor:help}.popup-module__Popup--oEzoq .popup-module__translationError--EfYPm{display:flex;align-items:center;gap:var(--flex-gap)}.popup-module__Popup--oEzoq .popup-module__translationError--EfYPm .popup-module__errorInfo--dLTbg{flex:1}.popup-module__Popup--oEzoq .popup-module__translationError--EfYPm .popup-module__errorIcon--eE4Tr{pointer-events:none}.popup-module__Popup--oEzoq .popup-module__translationError--EfYPm a{font-style:italic}.popup-module__Popup--oEzoq a{color:inherit}.popup-module__Popup--oEzoq .popup-module__translatedFrom--egBk9{font-style:italic;margin-top:var(--theme-spacing);opacity:.75}.popup-module__iconTooltip--l5yar{z-index:100000 !important}
-</style><i class="icon-module__Icon--mJDq3 xtranslate-icon-module__XTranslateIcon--O7hhS icon-module__svg--Vvipk icon-module__interactive--jiTQl icon-module__focusable--l60fB icon-module__colorful--DPeih" tabindex="0" title="XTranslate: Auto-detect → " style="display: none;"><span><!--?xml version="1.0" encoding="utf-8"?-->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" xml:space="preserve">
-  <g>
-  <lineargradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.3506" y1="64.6788" x2="128.3506" y2="64.6788">
-		<stop offset="0" style="stop-color:#662D91"></stop>
-    <stop offset="0.2591" style="stop-color:#7C2A90"></stop>
-    <stop offset="0.502" style="stop-color:#92278F"></stop>
-    <stop offset="1" style="stop-color:#9E1F63"></stop>
-	</lineargradient>
-    <path fill="url(#SVGID_1_)" d="M0.351,128.679v-32l32-32l-32-32v-32l64,64L0.351,128.679z M64.351,64.679l64,64v-32l-32-32l32-32
-		v-32L64.351,64.679z M64.351,96.679l-32,32h64L64.351,96.679z M64.351,32.679l32-32h-64L64.351,32.679z"></path>
-</g>
-</svg>
-</span></i><div class="popup-module__Popup--oEzoq " tabindex="-1" style="position: absolute; background: linear-gradient(rgb(0, 0, 0), rgba(98, 101, 101, 0.95)); border-radius: 5px; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 15px; color: rgba(255, 255, 255, 0.85); border: 2px solid rgba(135, 144, 156, 0.5); box-shadow: rgba(102, 102, 102, 0.5) 0px 0px 10px;"></div></template></div></html>
+   </body>
+</html>
