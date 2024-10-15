@@ -6,15 +6,15 @@
       <!-- Replace the content tag with appropriate information -->
       <meta
          name="description"
-         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         content="Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning"
          />
       <meta
          property="og:title"
-         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         content="Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning"
          />
       <meta
          property="og:description"
-         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         content="Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning"
          />
       <meta
          property="og:url"
@@ -26,11 +26,11 @@
       <meta property="og:image:height" content="856" />
       <meta
          name="twitter:title"
-         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         content="Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning"
          />
       <meta
          name="twitter:description"
-         content="Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images"
+         content="Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning"
          />
       <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
       <meta name="twitter:image" content="static/images/mesh.png" />
@@ -38,10 +38,10 @@
       <!-- Keywords for your paper to be indexed by-->
       <meta
          name="keywords"
-         content="3D GAN inversion, Latent space, 3D geometry reconstruction, Encoders, EG3D, PanoHead, 360-degree perspective, Dual encoder system, High-fidelity reconstruction, Triplane domain, Stitching framework, Occlusion-aware triplane discriminator, Adversarial loss, Viewpoint synthesis"
+         content="ision-and-Language Navigation, Large Language Model, Unmanned Aerial Vehicles, Emboided, Navigation, Top-down map, Zero-shot, Dual encoder system, Action Prediction"
          />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Dual Encoder 3D GAN Inversion</title>
+      <title>STMR VLN</title>
       <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico" />
       <link
          href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -186,27 +186,27 @@
                   <h2 class="title is-3">Abstract</h2>
                   <div class="content has-text-justified">
                      <p>
-                        3D GAN inversion aims to project a single image into the latent
-                        space of a 3D Generative Adversarial Network (GAN), thereby
-                        achieving 3D geometry reconstruction. While there exist encoders
-                        that achieve good results in 3D GAN inversion, they are
-                        predominantly built on EG3D, which specializes in synthesizing
-                        near-frontal views and is limiting in synthesizing comprehensive
-                        3D scenes from diverse viewpoints. In contrast to existing
-                        approaches, we propose a novel framework built on PanoHead,
-                        which excels in synthesizing images from a 360-degree
-                        perspective. To achieve realistic 3D modeling of the input
-                        image, we introduce a dual encoder system tailored for
-                        high-fidelity reconstruction and realistic generation from
-                        different viewpoints. Accompanying this, we propose a stitching
-                        framework on the triplane domain to get the best predictions
-                        from both. To achieve seamless stitching, both encoders must
-                        output consistent results despite being specialized for
-                        different tasks. For this reason, we carefully train these
-                        encoders using specialized losses, including an adversarial loss
-                        based on our novel occlusion-aware triplane discriminator.
-                        Experiments reveal that our approach surpasses the existing
-                        encoder training methods qualitatively and quantitatively.
+                        Aerial Vision-and-Language Navigation (VLN) is a novel task
+                        enabling Unmanned Aerial Vehicles (UAVs) to navigate in
+                        outdoor environments through natural language instructions
+                        and visual cues. It remains challenging due to the complex
+                        spatial relationships in outdoor aerial scenes. In this
+                        paper, we propose an end-to-end zero-shot framework for
+                        aerial VLN tasks, where the large language model (LLM) is
+                        introduced as our agent for action prediction.
+                        Specifically, we develop a novel Semantic-Topo-Metric
+                        Representation (STMR) to enhance the spatial reasoning
+                        ability of LLMs. This is achieved by extracting and
+                        projecting instruction-related semantic masks of landmarks
+                        into a top-down map that contains the location information
+                        of surrounding landmarks. Further, this map is transformed
+                        into a matrix representation with distance metrics as the
+                        text prompt to the LLM, for action prediction according to
+                        the instruction. Experiments conducted in real and
+                        simulation environments have successfully proved the
+                        effectiveness and robustness of our method, achieving 15.9%
+                        and 12.5% improvements (absolute) in Oracle Success Rate
+                        (OSR) on AerialVLN-S dataset. 
                      </p>
                   </div>
                </div>
@@ -331,7 +331,7 @@
          <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>
             <pre><code>@misc{bilecen2024dualencoderganinversion,
-                              title={Dual Encoder GAN Inversion for High-Fidelity 3D Head Reconstruction from Single Images}, 
+                              title={Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning}, 
                               author={Bahri Batuhan Bilecen and Ahmet Berke Gokmen and Aysegul Dundar},
                               year={2024},
                               eprint={2409.20530},
