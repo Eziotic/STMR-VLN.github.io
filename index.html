@@ -209,9 +209,8 @@
          <div class="hero-body">
          <div class="container">
          <h2 class="title is-3">Method</h2>
-         <h3 class="title is-4">Dual Encoder</h3>
          <p class="justified-text">
-         We have opted to train two separate encoders rather than a single one, each with a specific focus. One encoder is dedicated to capturing visible regions, while the other specializes in occluded regions. This approach allows each encoder to excel at its respective task. By employing our novel stitching pipeline, we can effectively combine the strengths of both encoders, yielding superior results compared to a single encoder that would struggle to handle both tasks with the same level of precision.
+         In this paper, we introduce a novel zero-shot framework that leverages large language models (LLMs) for action prediction in aerial VLN tasks.
          </p>
          <br><br><br>
          <div class="item item-video1">
@@ -220,8 +219,7 @@
             <h2 class="has-text-centered">
                <br>
                <p class="justified-text">
-               Our training methodology for the Triplane discriminator involves generating real samples by sampling latent vectors Z+
-               and producing in-domain triplanes using PanoHead. Fake samples are generated from encoded images. Despite the effectiveness of adversarial loss in enhancing reconstructions, challenges persist in achieving high fidelity to the input due to the origin of real samples from the generator. To address this, we propose an <b>occlusion-aware discriminator</b>, trained exclusively with features from occluded pixels. This ensures that visible regions, such as frontal faces, do not influence discriminator training. Additionally, a masking mechanism for synthesized triplanes is employed to alleviate distribution mismatches between encoded and synthesized samples.
+               Our method consists of three modules, i.e. sub-goal extracting, Semantic-Topo-Metric Representating, and LLM planner. First, we prompt an LLM to break down long instructions and extract specific landmarks, which will be classified by perception models, generating corresponding semantic masks. Then we project these masks into a top-down map using the UAV-view pose and depth information. The map is further compressed into a matrix representation. Finally, we prompt LLM with well-designed instructions to enable effective reasoning.
                </p>
                <br>
             </h2>
@@ -231,7 +229,7 @@
             <img src="static/images/STMR.png" alt="Inference" />                  
             <h2 class="has-text-centered justified-text">
                <br>
-               The inference pipeline with dual encoders for full 3D head reconstruction. Given a face portrait with pose π<sub>R</sub>, we can perform 360-degree rendering from any given pose π<sub>Novel</sub>. Here E<sub>1</sub> refers to the encoder which is trained with <b>occlusion aware discriminator</b> whereas E<sub>2</sub> is trained without the discriminator to maximize reconstruction in visible regions.
+               Firstly, we extract instruction-related landmarks and obtain corresponding semantic masks by perception models. After that, semantic masks obtained from each step are gradually projected into a top-down map using depth and pose transformation. To integrate rich visual information and topology into the text prompt while maintaining its simplicity, we separate the top-down map centered at the UAV's current position into grids and substitute each grid with a semantic number. This process transforms the top-down map into a matrix representation to serve as a spatial prompt for the LLM.
             </h2>
          </div>
       </section>
@@ -239,7 +237,7 @@
       <section class="hero is-small is-light">
          <div class="hero-body">
          <div class="container">
-         <h2 class="title is-3">>Demo Video</h2>
+         <h2 class="title is-3">Demo Video</h2>
          <div class="item item-video1">
            <br>
            <center>
@@ -248,39 +246,8 @@
              </video>
            </center>
          </div>
-           
-            <h2 class="subtitle has-text-centered">
-               <br>
-               Qualitative results of our method on the different human faces.
-            </h2>
          </div>
       </section>
-      <section class="hero is-small  is-light">
-         <div class="hero-body">
-         <div class="container">
-         <h2 class="title is-3">Mesh Visualization Results</h2>
-         <div class="item item-video1">
-            <video
-               poster=""
-               id="video1"
-               autoplay
-               playsinline
-               preload="auto"
-               muted
-               loop
-               height="100%"
-               >
-               <!-- Your video file here -->
-               <source src="static/videos/mesh_grid_last.mp4" type="video/mp4" />
-            </video>
-            <h2 class="subtitle has-text-centered">
-               <br>
-               Qualitative results of our method on the different human faces and their corresponding meshes.
-               <p style="font-size: small;">We recognize that, in certain cases, the artifacts are visible in the back middle of the head and are more noticeable in the mesh rendering. Additional research and improvements are required.</p>
-            </h2>
-         </div>
-      </section>
-      <!-- End youtube video -->
       
       <!-- Paper poster -->
       <section class="hero is-small">
@@ -288,23 +255,11 @@
          <div class="container">
          <h2 class="title is-3">Comparison With Other Methods</h2>
          <div class="item item-video1">
-            <video
-               poster=""
-               id="video1"
-               autoplay
-               playsinline
-               preload="auto"
-               muted
-               loop
-               height="100%"
-               >
-               <!-- Your video file here -->
-               <source src="static/videos/comparison_with_titles.mp4" type="video/mp4" />
-            </video>
+            <img src="static/images/result.png" width="75%" class="center" alt="Training" />
             <h2 class="subtitle has-text-centered justified-text">
                <br>
-               Qualitative result comparions of our method with varying different methods.
-               <p style="font-size: small;">For GOAE, we trained the model on our dataset, and it generated realistic results for the input view. However, while multi-view consistency was achieved, the overall realism across views was lacking. Further tuning could improve the visual quality.</p>
+               Qualitative result comparions of our method in the real-world scenarios.
+               <p style="font-size: small;">Our method can align visual and textual landmarks as well as understand commands. Finally, the UAV reaches the destination successfully.</p>
 
             </h2>
          </div>
@@ -316,12 +271,12 @@
             <h2 class="title">BibTeX</h2>
             <pre><code>@misc{bilecen2024dualencoderganinversion,
                               title={Aerial Vision-and-Language Navigation via Semantic-Topo-Metric Representation Guided LLM Reasoning}, 
-                              author={Bahri Batuhan Bilecen and Ahmet Berke Gokmen and Aysegul Dundar},
+                              author={Yunpeng Gao and Zhigang Wang and Linglin Jing and Dong Wang and Xuelong Li and Bin Zhao},
                               year={2024},
-                              eprint={2409.20530},
+                              eprint={2410.08500},
                               archivePrefix={arXiv},
-                              primaryClass={cs.CV},
-                              url={https://arxiv.org/abs/2409.20530}, 
+                              primaryClass={cs.RO},
+                              url={https://arxiv.org/abs/2410.08500}, 
                         }</code></pre>
          </div>
       </section>
